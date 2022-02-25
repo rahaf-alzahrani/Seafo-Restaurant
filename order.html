@@ -1,0 +1,643 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<title>Order</title>
+<link rel="icon" href="icons/favicon.ico">
+<link rel="stylesheet" href="OrderStyle.css">
+<script src="table.js"></script>
+<script src="functioncreateBill.js"></script>
+</head>
+
+
+<body>
+    <!-- NAVBARS START --------------------------------------->
+	<header>
+		<div class="navbar">
+			<a class="logo" href="index.html" accesskey="h">
+				<img src="img/logo.png" alt="logo">
+			</a>
+      <!-- Nav Links START----------------------->
+			<ul class="nav">
+				<li><a href="menu.html" accesskey="m">Menu</a></li>
+				<li><a href="reservation.html" accesskey="r">Reservation</a> </li>
+				<li><a href="order.html" id="active" accesskey="o">Order</a></li>
+				<li><a href="Staff.html"  accesskey="s">Staff</a></li>
+			</ul>
+
+			<!-- Theme Change Button START------------->
+			<img src="icons/moon.png" id="moon" alt="moon dark theme">
+		</div>
+	</header>
+
+<main>
+<ul class="breadcrumb">
+
+ 
+  <li>
+    <a href="order.html">
+      <span class="icon"><img  alt="order" title="order" src="icons/order-food.png" height=20 width=20  ></span>
+      <span class="text">Order</span>
+    </a>
+  </li>
+  
+  <li>
+    <a href="index.html">
+      <span class="icon"><img  alt="home" title="home" src="icons/home.png" height=20 width=20  ></span>
+    </a>
+  </li>
+</ul>
+<form>
+    <p class="tableNo">
+        Please select the reserved table to make an order
+       
+        
+             
+        <select  name="tablenumber" id="tablenumber"> 
+            <option value="">--Select--</option>   </select> 
+            
+            <script>
+           
+                var resarr=[];
+                resarr= localStorage.getItem("reservedT");
+               
+                var select = document.getElementById("tablenumber"), 
+                       resarr
+           
+                for (var i=0; i<resarr.length; i++)
+                {
+           
+                   if (resarr[i] == ',') 
+                       i++; 
+                   
+                   if (resarr[i] == ',') 
+                       i++; 
+                    
+                       if ( /\d/.test(resarr[i]) ){
+                   var option = document.createElement("OPTION"),
+                       txt= document.createTextNode(resarr[i]); 
+                   option.appendChild(txt);
+                   select.insertBefore(option,select.lastChild); }
+                }
+               
+           
+            </script>
+           
+            </p>
+					<div class="pagelinks">  
+				<nav>
+					<ul>
+					<li class="catpag"><button class="m-paging-link" formaction="#myTable1">Meals</button></li>
+						<li class="catpag"><button class="m-paging-link" formaction="#myTable">Desserts</button></li>
+						<li class="catpag"><button class="m-paging-link" formaction="#myTable3">Drinks </button></li>
+					</ul>
+				</nav>
+			</div>	
+	
+        <!--container-->
+    <div class="container1">
+        
+	<!--table-->
+
+    <div class="order-table1">
+        <p class="otp">Click the button to sort the table, by Price:</p>
+        <p class="otp"><button class="sortb" onclick="sortTablee()">lower to higher</button></p>  <p class="otp"><button class="sortb" onclick="sortTable11()">higher to lower</button></p>
+
+        <table id="myTable1"> 
+        <caption id="table1">Meals</caption>
+            <thead>
+                <tr>
+                    <th>Meal Name</th>
+                    <th>Price</th>
+                    <th>Quntity</th>
+                </tr>
+                
+            </thead>
+         
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="order-infotable">
+                        <img src="img/m11.png" alt="Oysters " title="Oysters"  > 
+                        
+                                   <strong>Oysters</strong>
+                        <p>65 Cals Per PieceFresh shucked oysters head breaded and fried</p>
+                    </div>
+                        </td>
+                    <td id="price-quantity1">
+                        35.00
+                    </td>
+                    <td>
+                      
+                
+                            <label for="quantity1"></label> 
+                            <input type="number" placeholder="Qty" id="quantity1" name="quantity" min="1" max="5"> <br>
+                             <input class="addbutton" type="button" value="Add" onclick="addItem('Oysters', 'quantity1')">
+                        
+                    </td>
+                  
+                </tr>
+                   <tr>
+                    <td>
+                        <div class="order-infotable">
+                            <img src="img/m22.png" alt="Shellfish " title="Shellfish" > 
+                            
+                                       <strong>Shellfish</strong>
+                        <p>179 Cals Served with pickled cucumber, toasted beetroot, and creme fraiche</p>
+                        </div>
+                    <td id="price-quantity2">
+                        35.5
+                    </td>
+                    <td>
+                      
+                
+                            <label for="quantity1"></label> 
+                            <input type="number" placeholder="Qty" id="quantity2" name="quantity" min="1" max="5"> <br>
+                             <input class="addbutton" type="button" value="Add" onclick="addItem('Shellfish', 'quantity2')">
+                        
+                    </td>
+                  
+                </tr>
+                   <tr>
+                    <td>
+                        <div class="order-infotable">
+                            <img src="img/m33.png" alt="Green Salad " title="Green Salad" > 
+                            
+                                       <strong>Green Salad</strong>
+                     <p>63 CalsFresh mixed greens and toasted pines salad topped with light yogurt lemon zest sauce</p>
+                        </div>
+                    <td id="price-quantity3">
+                        45.5
+                    </td>
+                    <td>
+                      
+                
+                            <label for="quantity3"></label> 
+                            <input type="number" placeholder="Qty" id="quantity3" name="quantity" min="1" max="5"> <br>
+                             <input class="addbutton" type="button" value="Add" onclick="addItem('Green Salad', 'quantity3')">
+                      
+                    </td>
+                   
+                </tr>
+                <tr>
+                    <td>
+                        <div class="order-infotable">
+          <img src="img/m44.png" alt="Grilled Lemon Shrimp " title="Grilled Lemon Shrimp" > 
+                        
+                                   <strong>Grilled Lemon Shrimp</strong>
+                <p>419Cals Galician style boiled fresh-caught shrimp served with garlic glaze and hand picked lemon</p>
+                    </div>
+                        </td>
+                    <td id="price-quantity4">
+                        130.00
+                    </td>
+                    <td>
+                      
+                
+                            <label for="quantity1"></label> 
+                            <input type="number" placeholder="Qty" id="quantity4" name="quantity" min="0" max="5"> <br>
+                             <input class="addbutton" type="button" value="Add" onclick="addItem('Grilled Lemon Shrimp', 'quantity4')">
+                      
+                    </td>
+                  
+                </tr>
+                   <tr>
+                    <td>
+                        <div class="order-infotable">
+                            <img src="img/m55.png" alt="Chowder " title="Chowder" > 
+                            
+                                       <strong>Chowder</strong>
+                     <p>258Cals Mild and creamy chowder soup with oriental blend of spices</p>
+                        </div>
+                    <td id="price-quantity5">
+                        80.00
+                    </td>
+                    <td>
+                      
+                
+                            <label for="quantity1"></label> 
+                            <input type="number" placeholder="Qty" id="quantity5" name="quantity" min="1" max="5"> <br>
+                             <input class="addbutton" type="button" value="Add" onclick="addItem('Chowder', 'quantity5')">
+                       
+                    </td>
+                  
+                </tr>
+                   <tr>
+                    <td>
+                        <div class="order-infotable">
+               <img src="img/m66.png" alt="Sea Platter" title="Sea Platter" > 
+                            
+                                       <strong>Sea Platter</strong>
+                   <p>833Cals All you can eat mixed seafood platter with lobster, crab, shrimp, and corn</p>
+                        </div>
+                    <td id="price-quantity6">
+                        164.00
+                    </td>
+                    <td>
+                      
+                
+                            <label for="quantity1"></label> 
+                            <input type="number" placeholder="Qty" id="quantity6" name="quantity" min="1" max="5"> <br>
+                             <input class="addbutton" type="button"  value="Add" onclick="addItem('Sea Platter', 'quantity6')">
+                      
+                    </td>
+                   
+              
+            </tbody>
+        </table>
+    </div> 
+</form>
+    <!--endtable-->   
+
+
+
+
+    	<!--table2-->
+
+        <div class="order-table1">
+            <p class="otp">Click the button to sort the table, by Price:</p>
+    <p class="otp"><button class="sortb" onclick="sortTable()">lower to higher</button></p>  <p class="otp"><button class="sortb" onclick="sortTable1()">higher to lower</button></p>
+    
+            <table id="myTable"> 
+            <caption id="table2">Desserts</caption>
+                <thead>
+                    <tr>
+                        <th>Dessert Name</th>
+                        <th>Price</th>
+                        <th>Quntity</th>
+                    </tr>
+                    
+                </thead>
+             
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="order-infotable">
+                                <img src="img/des44.png" alt="Chocolate Pancakes" title="Chocolate Pancakes "> 
+                            
+                                <strong>Chocolate Pancakes</strong>
+                                     
+                                <p>1120 Cals Buttermilk fluffy pancakes topped with Swiss chocolate and optional chocolate drizzle</p>
+                        </div>
+                            </td>
+                        <td id="price-quantity7">
+                            45.5  
+                        </td>
+                        <td>
+                          
+                    
+                                <label for="quantity7"></label> 
+                                <input type="number" placeholder="Qty" id="quantity7" name="quantity7" min="1" max="5"> <br>
+                                 <input class="addbutton" type="button" value="Add" onclick="addItem('Chocolate Pancakes', 'quantity7')">
+                            
+                        </td>
+                      
+                    </tr>
+                       <tr>
+                        <td>
+                            <div class="order-infotable">
+                                <img src="img/des22.png" alt="Strawberry Ice Cream" title="Strawberry Ice Cream" >
+                                
+                                <strong>Strawberry Ice Cream</strong>
+                                       
+                                <p>435 Cals Homemade whole milk ice cream mixed with fresh strawberries and strawberry jam </p>
+                            </div>
+                        <td id="price-quantity8">
+                            25.00
+                        </td>
+                        <td>
+                          
+                    
+                                <label for="quantity8"></label> 
+                                <input type="number" placeholder="Qty" id="quantity8" name="quantity8" min="1" max="5"> <br>
+                                 <input class="addbutton" type="button" value="Add" onclick="addItem('Strawberry Ice Cream', 'quantity8')">
+                            
+                        </td>
+                      
+                    </tr>
+                       <tr>
+                        <td>
+                            <div class="order-infotable">
+                                <img src="img/des11.png" alt="Berry Waffles" title="Berry Waffles"> 
+                                
+                                <strong>Berry Waffles</strong>
+                                        
+                                <p>963 Cals Delicious off the pan waffles with a side of a berry mix </p>
+                            </div>
+                        <td id="price-quantity9">
+                            45.5
+                        </td>
+                        <td>
+                          
+                    
+                                <label for="quantity9"></label> 
+                                <input type="number" placeholder="Qty" id="quantity9" name="quantity" min="1" max="5"> <br>
+                                 <input class="addbutton" type="button" value="Add" onclick="addItem('Berry Waffles', 'quantity9')">
+                          
+                        </td>
+                       
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="order-infotable">
+                                <img src="img/des33.png" alt="Chocolate Babka" title="Chocolate Babka" > 
+                            
+                                       <strong>Chocolate Babka</strong>
+                                       <p>Chocolate Babka 142 Cals (per piece) Daily and freshly baked chocolate,cinammon, and cardamom greek babka </p>
+                        </div>
+                            </td>
+                        <td id="price-quantity10">
+                            50.00
+                        </td>
+                        <td>
+                          
+                    
+                                <label for="quantity10"></label> 
+                                <input type="number" placeholder="Qty" id="quantity10" name="quantity10" min="0" max="5"> <br>
+                                 <input class="addbutton" type="button" value="Add" onclick="addItem('Chocolate Babka', 'quantity10')">
+                          
+                        </td>
+                      
+                    </tr>
+                       <tr>
+                        <td>
+                            <div class="order-infotable">
+                                <img src="img/des55.png" alt="Berry pancakes" title="Berry pancakes" > 
+                                <strong>Berry pancakes</strong>
+                                       
+                                <p>Berry pancakes 1142 Cals (per piece) Daisy infused buttermilk fluffy pancakes topped with your choice of berries </p>
+                            </div>
+                        <td id="price-quantity11">
+                            35.5
+                        </td>
+                        <td>
+                          
+                    
+                                <label for="quantity11"></label> 
+                                <input type="number" placeholder="Qty" id="quantity11" name="quantity11" min="1" max="5"> <br>
+                                 <input class="addbutton" type="button" value="Add" onclick="addItem('Berry pancakes', 'quantity11')">
+                           
+                        </td>
+                      
+                    </tr>
+                       <tr>
+                        <td>
+                            <div class="order-infotable">  
+                                <img src="img/des4.png" alt="blueberry pie" title="blueberry pie" > 
+                                
+                                           <strong>blueberry pie</strong>
+                                           <p>435 Cals blueberry pie with fresh blueberries, warm spices, lemon and crunchy crust. </p>
+                            </div>
+                        <td id="price-quantity12">
+                            164.00
+                        </td>
+                        <td>
+                          
+                    
+                                <label for="quantity1"></label> 
+                                <input type="number" placeholder="Qty" id="quantity12" name="quantity12" min="1" max="5"> <br>
+                                 <input class="addbutton" type="button"  value="Add" onclick="addItem('blueberry pie', 'quantity12')">
+                          
+                        </td>
+                       
+               
+        
+                </tbody>
+            </table>
+        </div> 
+    </form>
+        <!--endtable-->   
+
+
+     	<!--table3-->
+
+         <div class="order-table1">
+            <p class="otp">Click the button to sort the table, by Price:</p>
+            <p class="otp"><button class="sortb" onclick="sortTableee()">lower to higher</button></p>  <p class="otp"><button class="sortb" onclick="sortTable111()">higher to lower</button></p>
+    
+            <table id="myTable3"> 
+            <caption id="table3">Drinks</caption>
+                <thead>
+                    <tr>
+                        <th>Drink Name</th>
+                        <th>Price</th>
+                        <th>Quntity</th>
+                    </tr>
+                    
+                </thead>
+             
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="order-infotable">
+                                <img src="img/d11.png" alt="strawberry Mijito" title="strawberry Mijito"  > 
+                            
+                                <strong> Strawberry Mijito </strong>
+                                       
+                                <p>Refreshing strawberry mojito with sparkling water</p>
+                        </div>
+                            </td>
+                        <td id="price-quantity13">
+                            20.5  
+                        </td>
+                        <td>
+                          
+                    
+                                <label for="quantity13"></label> 
+                                <input type="number" placeholder="Qty" id="quantity13" name="quantity13" min="1" max="5"> <br>
+                                 <input class="addbutton" type="button" value="Add" onclick="addItem('strawberry Mijito', 'quantity13')">
+                            
+                        </td>
+                      
+                    </tr>
+                       <tr>
+                        <td>
+                            <div class="order-infotable">
+                                <img src="img/d22.png" alt="pomegranate" title="pomegranate"   > 
+                                
+                                <strong>Pomegranate</strong>
+                                        
+                                <p>Our special mix of pomegranate syrup with 7up soft drink</p>
+                            </div>
+                        <td id="price-quantity14">
+                            20.5
+                        </td>
+                        <td>
+                          
+                    
+                                <label for="quantity14"></label> 
+                                <input type="number" placeholder="Qty" id="quantity14" name="quantity14" min="1" max="5"> <br>
+                                 <input class="addbutton" type="button" value="Add" onclick="addItem('Pomegranate', 'quantity14')">
+                            
+                        </td>
+                      
+                    </tr>
+                       <tr>
+                        <td>
+                            <div class="order-infotable">
+                                <img src="img/d33.png" alt="mix Mojito" title="mix Mojito" > 
+                                
+                                <strong> Mix Mojito </strong>
+                                        
+                                <p>Mixed berry mojito with sparkling water</p>
+                            </div>
+                        <td id="price-quantity15">
+                            20.5
+                        </td>
+                        <td>
+                          
+                    
+                                <label for="quantity15"></label> 
+                                <input type="number" placeholder="Qty" id="quantity15" name="quantity15" min="1" max="5"> <br>
+                                 <input class="addbutton" type="button" value="Add" onclick="addItem('Mix Mojito', 'quantity15')">
+                          
+                        </td>
+                       
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="order-infotable">
+                                <img src="img/d44.png" alt="lemonade" title="lemonade" > 
+                            
+                                <strong>Lemonade </strong>
+                                       
+                                <p>Lemonade with mint</p>
+                        </div>
+                            </td>
+                        <td id="price-quantity16">
+                            20.5
+                        </td>
+                        <td>
+                          
+                    
+                                <label for="quantity16"></label> 
+                                <input type="number" placeholder="Qty" id="quantity16" name="quantity16" min="0" max="5"> <br>
+                                 <input class="addbutton" type="button" value="Add" onclick="addItem('Lemonade', 'quantity16')">
+                          
+                        </td>
+                      
+                    </tr>
+                       <tr>
+                        <td>
+                            <div class="order-infotable">
+                                <img src="img/wa.png" alt="water" title="water" >
+                                <strong> water </strong>
+                                       
+                                   <p> 0 cal </p>
+                            </div>
+                        <td id="price-quantity17">
+                            2.00
+                        </td>
+                        <td>
+                          
+                    
+                                <label for="quantity17"></label> 
+                                <input type="number" placeholder="Qty" id="quantity17" name="quantity17" min="1" max="5"> <br>
+                                 <input class="addbutton" type="button" value="Add" onclick="addItem('water', 'quantity17')">
+                           
+                        </td>
+                      
+                    </tr>
+                       <tr>
+                        <td>
+                            <div class="order-infotable">  
+                                <img src="img/c.png" alt="italian coffee" title="italian coffee" > 
+                                
+                                <strong> Italian Coffee </strong>
+                                      
+                                <p>Rich, Authentic, Creamy Italian Coffee</p>
+                            </div>
+                        <td id="price-quantity18">
+                            12.00
+                        </td>
+                        <td>
+                          
+                    
+                                <label for="quantity18"></label> 
+                                <input type="number" placeholder="Qty" id="quantity18" name="quantity18" min="1" max="5"> <br>
+                                 <input class="addbutton" type="button"  value="Add" onclick="addItem('Italian Coffee', 'quantity18')">
+                          
+                        </td>
+                       
+               
+        
+                </tbody>
+            </table>
+        </div> 
+    </form>
+        <!--endtable-->        
+  </div>  <!--container end-->
+  
+
+	<!--table-->
+    <hr id="ordertable">
+            <div class="order-table">
+                <table> 
+				<caption>Orders</caption>
+                    <thead>
+                        <tr>
+                            <th id="tno">Table No.</th>
+                            <th id="odno">Order No.</th>
+                            <th id="totpr">Total Price</th>
+                            <th>Print invoice</th>
+                        </tr>
+						
+                    </thead>
+                    <tbody id="orders-table-body">
+                       
+                    </tbody>
+                </table>
+            </div> 
+            <!--endtable-->   
+        </main>
+
+        
+<aside>
+    <form class="orderlist">
+        <h4>Order List</h4>
+        <div>
+
+        </div>
+      </form>
+            <button type="button" class="orderbutton" onclick="order()">Submit Order</button>
+            <br>
+    Order total: <b>SR</b>
+    <input type="text"  name="orderTotal" id="orderTotal" Size=6 readonly>
+</aside>
+
+
+        <!--Footer start-->
+    <footer>
+        <ul class="social_icon">
+          <li><a href="https://www.instagram.com/" target="_blank"><img src="icons/instagram.png" alt="instagram"></a></li>
+          <li><a href="https://www.whatsapp.com/" target="_blank"><img src="icons/whatsapp.png" alt="whatsapp"></a></li>
+          <li><a href="https://twitter.com/home" target="_blank"><img class="twi" src="icons/twitter.png" alt="twitter"></a></li>
+        </ul>
+        <ul class="menu">
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="reservation.html">Reservation</a> </li>
+          <li><a href="order.html">Order</a></li>
+          <li><a href="Staff.html">Staff</a></li>
+        </ul>
+        <p>©2021 Seafo | Some Rights Reserved</p>
+    </footer>
+    <!--Footer end-->
+
+    <script>
+		var moon = document.getElementById("moon");
+
+		moon.onclick = function() {
+			document.body.classList.toggle("dark-theme");
+			if(document.body.classList.contains("dark-theme")){
+				moon.src = "icons/sun.png";
+			}
+			else {
+				moon.src = "icons/moon.png";
+			}
+		}
+	</script>
+</body>
+</html>
+
+

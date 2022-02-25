@@ -1,0 +1,198 @@
+<!DOCTYPE  html> 
+<html lang="en">
+    
+<head>
+    <meta charset="utf-8">
+    <title>Reservation </title>
+    <link rel="icon" href="icons/favicon.ico">
+    <link rel="stylesheet" href="ResStyle.css">
+    <script src="reservation.js"></script>
+</head>
+
+<body>
+    
+         <!-- NAVBARS START --------------------------------------->
+         <header>
+            <div class="navbar">
+                <a class="logo" href="index.html" accesskey="h">
+                    <img src="img/logo.png" alt="logo">
+                </a>
+
+          <!-- Nav Links START----------------------->
+                <ul class="nav">
+                    <li><a href="menu.html" accesskey="m">Menu</a></li>
+                    <li><a href="reservation.html" id="active"  accesskey="r">Reservation</a> </li>
+                    <li><a href="order.html" accesskey="o">Order</a></li>
+                    <li><a href="Staff.html" accesskey="s">Staff</a></li>
+                </ul>
+
+                <!-- Theme Change Button START------------->
+                <img src="icons/moon.png" id="moon" alt="moon dark theme">
+            </div>
+        </header>
+       
+<section id="RES" >
+<ul class="breadcrumb">
+    
+    <li>   
+      <a herf="reservation.html">
+          <span class="Icon"><img  alt="reservation" title="reservation" src="icons/reservation.png" height=20 width=20  ></span>
+          <span class="text">Book</span>  
+      </a>
+  </li>  
+    <li>
+      <a href="index.html">
+        <span class="icon"><img  alt="home" title="home" src="icons/home.png" height=20 width=20  ></span>
+      </a>
+    </li>
+  </ul>
+
+
+
+
+
+    <div class="reservations">
+        
+        <div class="container">
+      <!-------------------Forms-------------------------->
+      <div class="FormContainer">
+        <div id="RG" class="title">Registraion</div>
+
+        <form onsubmit="return Confirm()"  id="Form1">
+
+        <div class="userinfo">
+        
+        <div class="inputB">
+            <span id="FText" class="details">Full Name</span>
+            <input  id="Fname" type="text" name="name" placeholder="Enter your Full name" >
+        </div>
+    
+        <div class="inputB">
+        <label >Phone<input id="phone" type="tel" name="phone" placeholder="Enter your phone numer" ></label>
+        </div>
+
+
+
+        <div class="inputB">
+            <span id="Cust"class="details">Number of Customer</span>
+            <input id="Customer" name="Num" type="text" placeholder="Enter number like 4, 6 or 8 " >
+        </div>
+        </div>
+
+        <div class="Rbutton">
+            <button id="Rbutton" type="submit" name="Reserve" value="Reserve"> Reserve </button>
+        </div>
+     
+        </form>       
+    </div>
+
+      
+               </div>
+               <div id="space">
+        <!-- Table 1 -->
+
+        <div class="tables" id="AllTable">
+
+        <div class="table-items" id="one" >   
+            <img id="TableOne" src="img/Table1.png" alt="Table one"  onclick="reservation(1);">
+            <div class="details">
+                <h5 class="Capacity"> Capacity: 8 Persons</h5>
+            </div> 
+           
+       </div>
+   
+
+
+    
+         <!-- Table 2 -->
+       
+            <div class="table-items" id="two" > 
+                <img id="TableTwo" src="img/Table2.png" alt="Table two"  onclick="reservation(2);" onload="TableColor();">
+                <div class="details">
+                    <h5>Capacity: 4 Persons</h5>
+                </div> 
+                
+            </div>
+ 
+         <!-- table 3 -->
+
+                <div class="table-items" id="three"  > 
+                    <img id="TableThree" src="img/Table3.png" alt="Table three"  onclick="reservation(3);">
+                    <div class="details">
+                        <h5>Capacity: 6 Persons</h5>
+                    </div> 
+                    
+                </div>
+         <!-- table 4 --> 
+         <div class="subclass">
+                <div class="table-items" id="four"  > 
+                        <img id="TableFour" src="img/Table4.png" alt="Table four" onclick="reservation(4);" >
+                    <div class="details">
+                        <h5>Capacity: 6 Persons</h5>
+                    </div> 
+                    
+                </div> </div>
+         <!-- table 5 -->
+         
+                <div class="table-items" id="five"  >            
+                    <img  id="TableFive" src="img/Table5.png" alt="Table five" onclick="reservation(5);" >
+                    <div class="details">
+                        <h5>Capacity: 4 Persons</h5>
+                    </div> 
+                    
+                </div> 
+         <!-- table 6 -->
+
+                <div class="table-items" id="six"  > 
+                    <img id="Tablesix" src="img/Table6.png" alt="Table six" onclick="reservation(6);">
+                    <div class="details"> 
+                      <h5>Capacity: 8 Persons</h5>
+                    </div> 
+                  
+                </div> 
+            
+            </div>
+            
+        </div>
+ 
+       
+            
+
+           
+   
+      
+    
+</section>
+<footer>
+    <ul class="social_icon">
+      <li><a href="https://www.instagram.com/" target="_blank"><img src="icons/instagram.png" alt="instagram"></a></li>
+      <li><a href="https://www.whatsapp.com/" target="_blank"><img src="icons/whatsapp.png" alt="whatsapp"></a></li>
+      <li><a href="https://twitter.com/home" target="_blank"><img class="twi" src="icons/twitter.png" alt="twitter"></a></li>
+    </ul>
+    <ul class="menu">
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="reservation.html">Reservation</a> </li>
+      <li><a href="order.html">Order</a></li>
+      <li><a href="Staff.html">Staff</a></li>
+    </ul>
+    <p>©2021 Seafo | Some Rights Reserved</p>
+</footer>
+<!--Footer end-->
+
+
+     
+<script>
+  var moon = document.getElementById("moon");
+
+  moon.onclick = function() {
+    document.body.classList.toggle("dark-theme");
+    if(document.body.classList.contains("dark-theme")){
+      moon.src = "icons/sun.png";
+    }
+    else {
+      moon.src = "icons/moon.png";
+    }
+  }
+   </script> 
+</body>
+</html>

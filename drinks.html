@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Drinks
+        </title>
+        <link rel="icon" href="icons/favicon.ico">
+    <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 5px;
+    box-shadow: inset 0 0 10px rgb(0, 0, 0, 0.25);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #ff4848;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #ff4848c7;
+}
+
+  :root {
+  --primary-color: #f5f5f5;
+   --secondary-color: #fff;
+   --font-color: #292929;
+   --shadow: rgb(204, 204, 204);
+   --shadow2: rgba(0,0,0,0.08);
+   --footer-bg: #57d2d4;
+   --brdcrmb: #dbdada;
+}
+
+.dark-theme {
+  --primary-color: #393E46;
+  --secondary-color: #222831;
+  --font-color: #fff;
+  --shadow: rgba(0, 0, 0, 0.233);
+  --shadow2: rgba(0, 0, 0, 0.356);
+  --footer-bg: #222831;  
+  --brdcrmb: #222831;
+}
+
+/* NAVBAR -----------------------------------*/
+.logo {
+  flex: 1 1 auto;
+  margin-left: 5%;
+}
+
+.navbar {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background-color: var(--secondary-color);
+  width: 100%;
+  height: 70px;
+  z-index: 1;
+}
+
+.nav {
+display: flex;
+justify-content:right ;
+list-style: none;
+}
+
+
+.nav a {
+  transition: all 0.3s ease 0s;
+  margin: 15px;
+  font-size: 18px;
+  text-decoration: none;
+  color: var(--font-color);
+}
+
+.nav li a:hover {
+  font-weight: bold;
+}
+
+/* Button Dark/Light ----------*/
+#moon {
+  width: 25px;
+  cursor: pointer;
+  margin-right: 5%;
+}
+
+header{ 
+    position:absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+
+  body{
+    width:100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--primary-color);
+    line-height: 1.5;
+    font-family: Arial;
+    color: var(--font-color);
+  }
+        
+  main{
+    position: relative;
+    width:90%;
+    height: auto;
+    padding: 1%;
+    margin :1%;
+  }
+  
+  .wrapper{
+    width:1200px;
+    margin:100px auto;
+  }
+
+  .title{
+    text-align:center;
+    margin-bottom:60px;
+  }
+
+  .title h4{
+    font-size:36px;
+    position: absolute;
+    top: 14%;
+    left: 47%;
+    display:inline-block;
+    padding-bottom:10px;
+  }
+  
+  .title h4:before{
+    position:absolute;
+    content:"";
+    width:100px;
+    height:5px;
+    background-color:#ff4848;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+  }
+  
+  .flip-card-drinks {
+    background-color: transparent;
+    justify-content: center;
+    margin: 5px;
+    padding: 0px;
+    width: 222px;
+    height: 400px;
+    border: 1px solid var(--primary-color);
+    perspective: 1000px; 
+    margin-top: 100px;
+  }
+    
+  .flip-card-inner-drinks {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+  }
+    
+  .flip-card-drinks:hover .flip-card-inner-drinks {
+    transform: rotateY(180deg);
+    box-shadow: 0.5px 0.5px 20px var(--shadow);
+  
+  }
+    
+  .flip-card-front-drinks, .flip-card-back-drinks {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+    
+  .flip-card-front-drinks {
+    background-color: #bbb;
+    color: black;
+  }
+  
+  
+  .flip-card-back-drinks {
+    background-color: #57d2d4 ;
+    color: white;
+    transform: rotateY(180deg);
+  }
+
+  .flip-card-back-drinks h1 {
+    text-align: center;
+    margin-top: 50%;
+  }
+
+  .flip-card-back-drinks p {
+    text-align: center;
+  }
+
+  
+  
+footer {
+    position: absolute;
+    width: 100%;
+    background-color: var(--footer-bg);
+    min-height: 100px;
+    padding: 20px 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 800px;
+}
+
+footer .social_icon, 
+footer .menu {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px 0;
+    flex-wrap: wrap;
+}
+
+footer .social_icon li,
+footer .menu li {
+    list-style: none;
+}
+
+footer .social_icon li a {
+    font-size: 2em;
+    color: white;
+    margin: 0 10px;
+    display: inline-block;
+    transition: 0.5s;
+}
+
+.social .twi,
+.social_icon .twi {
+    width: 50px;
+    height: 50px;
+}
+
+.social_icon img,
+.social img {
+    width: 40px;
+    height: 40px;
+}
+
+footer .social_icon li a:hover {
+    transform: translateY(-10px);
+}
+
+footer .menu li a {
+    font-size: 1.3em;
+    color: white;
+    margin: 0 10px;
+    display: inline-block;
+    text-decoration: none;
+    opacity: 1;
+}
+
+footer .menu li a:hover {
+    opacity: 0.80;
+}
+
+footer p {
+    text-align: center;
+    color: white;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+
+
+
+
+span {
+font-size: 15px;
+}
+  
+  ul.breadcrumb {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  left: 140px;
+  position: absolute;
+  top: 13%;
+  display: inline-block;
+  list-style: none;
+  }
+  
+  ul.breadcrumb li {
+  float: right;
+  padding: 5px;
+  background-color: var(--primary-color);
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  position: relative;
+  margin-left: -50px;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  margin-top: 3px;
+  }
+
+  ul.breadcrumb li a {
+  overflow: hidden;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  text-decoration: none;
+  height: 50px;
+  color: var(--font-color);
+  background-color: var(--brdcrmb);
+  text-align: center;
+  min-width: 50px;
+  display: block;
+  line-height: 50px;
+  padding-left: 52px;
+  padding-right: 33.33333px;
+  width: 50px;
+  }
+
+  ul.breadcrumb li a .icon {
+  display: inline-block;
+  }
+
+  ul.breadcrumb li a .text {
+  display: none;
+  opacity: 0;
+  }
+
+  ul.breadcrumb li a:hover {
+  width: 150px;
+  background-color: #57d2d4;
+  }
+
+  ul.breadcrumb li a:hover .text {
+  display: inline-block;
+  opacity: 1;
+  }
+
+  ul.breadcrumb li:last-child a {
+  padding: 0;
+  }
+
+  ul.breadcrumb li:last-child:hover {
+  padding: 3px;
+  margin-top: 0;
+  }
+
+  ul.breadcrumb li:last-child:hover a {
+  width: 20px;
+  height: 60px;
+  line-height: 60px;
+  }
+
+</style>
+    </head>
+    
+    
+    <body>
+               <!-- NAVBARS START --------------------------------------->
+	<header>
+		<div class="navbar">
+			<a class="logo" href="index.html" accesskey="h">
+				<img src="img/logo.png" alt="logo">
+			</a>
+      <!-- Nav Links START----------------------->
+			<ul class="nav">
+				<li><a href="menu.html" id="active" accesskey="m">Menu</a></li>
+				<li><a href="reservation.html" accesskey="r">Reservation</a> </li>
+				<li><a href="order.html" accesskey="o">Order</a></li>
+				<li><a href="Staff.html" accesskey="s">Staff</a></li>
+			</ul>
+			<!-- Theme Change Button START------------->
+			<img src="icons/moon.png" id="moon" alt="moon dark theme">
+		</div>
+	</header>
+
+  
+      <ul class="breadcrumb">
+        <li>
+          <a href="drinks.html">  
+          <span class="icon"><img  alt="drinks" title="drinks" src="icons/drink.png" height=20 width=20  ></span>
+          <span class="text">Drinks</span>
+        </a>
+      </li>
+        <li>
+          <a href="menu.html">
+            <span class="icon"><img  alt="menu" title="menu" src="icons/menu.png" height=20 width=20  ></span>
+            <span class="text">Menu</span>
+          </a>
+        </li>
+      
+     
+          <li>
+            <a href="index.html">
+              <span class="icon"><img  alt="Home" title="home" src="icons/home.png" height=20 width=20  ></span>
+              <span class="text">Home</span>
+            </a>
+          </li>
+      </ul>
+
+
+      <div class="title">
+        <h4>Drinks</h4>
+    </div> 
+  
+  <div class="flip-card-drinks">
+      <div class="flip-card-inner-drinks">
+        <div class="flip-card-front-drinks">
+          <img src="image/drink1.png" alt="Soft drinks" title="Pomegranate 7UP Drink" >
+        </div>
+        <div class="flip-card-back-drinks">
+          <h1>Pomegranate 7UP</h1>
+          <p>Our special mix of pomegranate syrup with 7UP soft drink</p>
+        </div>
+      </div>
+    </div>     
+    <div class="flip-card-drinks">
+      <div class="flip-card-inner-drinks">
+        <div class="flip-card-front-drinks">
+          <img src="image/drink2.png" alt="Strawberry mojito" title="Strawberry mojito drink" >
+        </div>
+        <div class="flip-card-back-drinks">
+          <h1>Strawberry Mojito</h1>
+          <p>Refreshing strawberry mojito with fresh strawberry bits</p>
+        </div>
+      </div>
+    </div>     
+    <div class="flip-card-drinks">
+      <div class="flip-card-inner-drinks">
+        <div class="flip-card-front-drinks">
+          <img src="image/drink3.png" alt="Lemonade" title="Lemonade" >
+        </div>
+        <div class="flip-card-back-drinks">
+          <h1>Lemonade</h1>
+          <p>Lemonade with mint</p>
+        </div>
+      </div>
+    </div>     
+    <div class="flip-card-drinks">
+      <div class="flip-card-inner-drinks">
+        <div class="flip-card-front-drinks">
+          <img src="image/drink4.png" alt="Mix berry mojito" title="Mix berry mojito">
+        </div>
+        <div class="flip-card-back-drinks">
+          <h1>Mix Mojito</h1>
+          <p>Mixed berry mojito with sparkling water</p>
+        </div>
+      </div>
+    </div>     
+    <div class="flip-card-drinks">
+      <div class="flip-card-inner-drinks">
+        <div class="flip-card-front-drinks">
+          <img src="image/drink5.png" alt="Coffee" title="Italian Coffee">
+        </div>
+        <div class="flip-card-back-drinks">
+          <h1>Italian Coffee</h1>
+          <p>Rich, authentic, creamy italian coffee</p>
+        </div>
+      </div>
+    </div>     
+    <div class="flip-card-drinks">
+      <div class="flip-card-inner-drinks">
+        <div class="flip-card-front-drinks">
+          <img src="image/drink6.png" alt="Water" title="Water">
+        </div>
+        <div class="flip-card-back-drinks">
+          <h1>Water</h1>
+        </div>
+      </div>
+    </div>   
+
+    
+
+<!--Footer start-->
+<footer>
+  <ul class="social_icon">
+    <li><a href="https://www.instagram.com/" target="_blank"><img src="icons/instagram.png" alt="instagram"></a></li>
+    <li><a href="https://www.whatsapp.com/" target="_blank"><img src="icons/whatsapp.png" alt="whatsapp"></a></li>
+    <li><a href="https://twitter.com/home" target="_blank"><img class="twi" src="icons/twitter.png" alt="twitter"></a></li>
+  </ul>
+  <ul class="menu">
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="reservation.html">Reservation</a> </li>
+    <li><a href="order.html">Order</a></li>
+    <li><a href="Staff.html">Staff</a></li>
+  </ul>
+  <p>©2021 Seafo | Some Rights Reserved</p>
+</footer>
+<!--Footer end-->
+
+	
+<script>
+  var moon = document.getElementById("moon");
+
+  moon.onclick = function() {
+    document.body.classList.toggle("dark-theme");
+    if(document.body.classList.contains("dark-theme")){
+      moon.src = "icons/sun.png";
+    }
+    else {
+      moon.src = "icons/moon.png";
+    }
+  }
+   </script> 
+    </body> 
+</html>
